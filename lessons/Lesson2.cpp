@@ -1,3 +1,7 @@
+// Lesson2.cpp
+// Author: Aidan Din
+// Accepts 3 numbers as input and outputs their sum
+
 #include <iostream>
 using namespace std;
 

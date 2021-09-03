@@ -1,3 +1,7 @@
+// Lesson1.cpp
+// Author: Aidan Din
+// Prints "Hello World!"
+
 #include <iostream>
 
 int main() {
