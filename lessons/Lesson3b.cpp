@@ -9,9 +9,9 @@ int main() {
 	float radius;
 	float pi = 3.1415;
 
-	cout << "Input a radius: " << "\n";
+	cout << "Input a radius: " << endl;
 	cin >> radius;
-	cout << "Area: " << pi * radius * radius << "\n";
+	cout << "Area: " << pi * radius * radius << endl;
 	cout << "Circumference: " << pi * radius * 2 << endl;
 	return 0;
 }
