@@ -6,8 +6,8 @@
 using namespace std;
 
 int main() {
-	cout << "unsigned int size: " << sizeof(uint) << " bytes"<< endl;
-	cout << "int size: " << sizeof(int) << " bytes" << endl;
+	cout << "unsigned int size: " << sizeof(uint) << " bytes\n";
+	cout << "int size: " << sizeof(int) << " bytes\n";
 	cout << "long size: " << sizeof(long) << " bytes" << endl;
 	return 0;
 }
