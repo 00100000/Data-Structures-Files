@@ -6,17 +6,17 @@
 using namespace std;
 
 int main() {
-	string x, y, z;
-	cin >> x >> y >> z;
+	string a, b, c;
+	cin >> a >> b >> c;
 	string row[3][3] = {
-		{x, y, z},
-		{x, y, z},
-		{x, y, z},
+		{a, b, c},
+		{a, b, c},
+		{a, b, c},
 	};
 	string col[3][3] = {
-		{x, x, x},
-		{y, y, y},
-		{z, z, z},
+		{a, a, a},
+		{b, b, b},
+		{c, c, c},
 	};
 
 	for (int i = 0; i < 3; i++) {
