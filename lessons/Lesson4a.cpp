@@ -1,3 +1,7 @@
+// Lesson4a.cpp
+// Author: Aidan Din
+// Makes an enum chessboard
+
 enum Piece { PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, EMPTY };
 
 int main() {

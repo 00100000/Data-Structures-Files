@@ -1,3 +1,7 @@
+// Lesson4b.cpp
+// Author: Aidan Din
+// Takes in 3 Strings and puts them into rows and columns
+
 #include <iostream>
 using namespace std;
 
