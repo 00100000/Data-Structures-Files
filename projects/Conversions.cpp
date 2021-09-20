@@ -51,7 +51,7 @@ string toBase(int decimal, int base) {
 		ret.insert(0, 1, '0' + (decimal % base));
 		decimal /= base;
 	}
-	return ret;
+	return ret.size() > 0 ? ret : "0";
 }
 // Converts the argument integer from base 10 to base 16
 string toBase16(int decimal) {
@@ -60,7 +60,7 @@ string toBase16(int decimal) {
 		ret.insert(0, 1, convert(decimal % 16));
 		decimal /= 16;
 	}
-	return ret;
+	return ret.size() > 0 ? ret : "0";
 }
 // Converts the argument string from the argument base to base 10 (base <= 9)
 int toInteger(string number, int base) {
