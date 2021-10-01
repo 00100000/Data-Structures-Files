@@ -12,6 +12,7 @@ void isPerfect(int n, bool& perfect) {
 	}
 	if (sum == n) perfect = true;
 }
+
 int main() {
 	int n;
 	cout << "Input an integer:\n";

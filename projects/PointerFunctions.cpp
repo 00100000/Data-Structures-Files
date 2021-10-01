@@ -1,6 +1,6 @@
 // PointerFunctions.cpp
 // Author: Aidan Din
-// Converts numbers and strings to different bases
+// Employs a variety of functions using pointers
 
 #include <iostream>
 using namespace std;
@@ -29,6 +29,7 @@ void arrayInfo(int* arrPtr, int length) {
 	}
 	cout << flush;
 }
+
 int main() {
 	return 0;
 }
