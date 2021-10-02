@@ -81,6 +81,7 @@ int toInteger16(string number) {
 	}
 	return ret;
 }
+
 int main() {
 	// User IO
 	cout << "What would you like to do?\n1. Convert an integer from base 10 to a base under 10\n2. Convert an integer from base 10 to base 16\n3. Convert a string from a base under 10 to base 10\n4. Convert a string from base 16 to base 10\n";
