@@ -13,13 +13,14 @@ void swap(int* a, int* b) {
 }
 // counts the number of vowels and consonants in a string
 void letterCount(string s, int* numVowels, int* numConsonants) {
+	char* c = &s.at(0);
 	for (int i = 0; i < s.length(); i++) {
-		char c = s.at(i);
-		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+		if (*c == 'A' || *c == 'E' || *c == 'I' || *c == 'O' || *c == 'U') {
 			*numVowels = *numVowels + 1;
 		} else {
 			*numConsonants = *numConsonants + 1;
 		}
+		c++;
 	}
 }
 // displays each element and their memory locations in an array
