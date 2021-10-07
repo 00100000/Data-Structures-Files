@@ -9,15 +9,23 @@ using namespace std;
 class Circle {
 	private:
 		double pi = M_PI;
-	public:
-		double radius;
 		double circum;
 		double area;
+	public:
+		double radius;
 
 		Circle(double r) {
 			radius = r;
 			circum = pi * 2 * r;
 			area = pi * r * r;
+		}
+
+		int getCircum() {
+			return circum;
+		}
+
+		int getArea() {
+			return area;
 		}
 };
 
@@ -29,8 +37,8 @@ int main() {
 	Circle y(b);
 	Circle z(c);
 
-	cout << "Circle 1\nRadius: " << x.radius << "\nCircumference: " << x.circum << "\nArea: " << x.area << "\n";
-	cout << "Circle 2\nRadius: " << y.radius << "\nCircumference: " << y.circum << "\nArea: " << y.area << "\n";
-	cout << "Circle 3\nRadius: " << z.radius << "\nCircumference: " << z.circum << "\nArea: " << z.area << "\n";
+	cout << "Circle 1\nRadius: " << x.radius << "\nCircumference: " << x.getCircum() << "\nArea: " << x.getArea() << "\n";
+	cout << "Circle 2\nRadius: " << y.radius << "\nCircumference: " << y.getCircum() << "\nArea: " << y.getArea() << "\n";
+	cout << "Circle 3\nRadius: " << z.radius << "\nCircumference: " << z.getCircum() << "\nArea: " << z.getArea() << "\n";
 	cout << flush;
 }
