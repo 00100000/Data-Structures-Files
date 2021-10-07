@@ -29,7 +29,7 @@ void arrayInfo(int* arrPtr, int length) {
 		cout << *arrPtr << " " << arrPtr << "\n";
 		*arrPtr++;
 	}
-	cout << endl;
+	cout << flush;
 }
 
 int main() {
