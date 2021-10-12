@@ -7,10 +7,9 @@
 using namespace std;
 
 class Circle {
-	private:
-		double pi = M_PI;
-		double circum;
-		double area;
+	double pi = M_PI;
+	double circum, area;
+
 	public:
 		double radius;
 
