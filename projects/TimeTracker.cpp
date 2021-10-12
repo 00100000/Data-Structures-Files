@@ -46,7 +46,7 @@ class Time {
 			min += m;
 			sec += s;
 			adjust();
-			return this;
+			return *this;
 		}
 		// properly re-formats the time
 		void adjust() {
@@ -59,11 +59,11 @@ class Time {
 		string toString() {
 			string ret = "";
 			if (hour < 10) ret += '0';
-			ret += hour + ':';
+			ret += to_string(hour) + ':';
 			if (min < 10) ret += '0';
-			ret += min + ':';
+			ret += to_string(min) + ':';
 			if (sec < 10) ret += '0';
-			ret += sec;
+			ret += to_string(sec);
 			return ret;
 		}
 		// setters
@@ -93,9 +93,55 @@ class Time {
 int main() {
 	bool repeat = true;
 	while (repeat) {
+		int choice;
+		cout << "What would you like to do?\n1. Add 2 times\n2. Subtract 2 times\n3. Increase a time by hours, seconds, and minutes\n4. Increase a time by seconds\n";
+		cin >> choice;
+		// times
+		int h, m, s;
+		cout << "Enter a time in hours, minutes, and seconds (Space separated):\n";
+		cin >> h >> m >> s;
+		Time first(h, m, s);
+		Time second(0);
+		// add/subtract methods
+		if (choice == 1 || choice == 2) {
+			cout << "Enter a second time in the same format:\n";
+			cin >> h >> m >> s;
+			second.setHour(h);
+			second.setMin(m);
+			second.setSec(s);
+		// increase methods
+		// re-use ints h, m, and s for time increases since times are already constructed
+		} else if (choice == 3) {
+			cout << "Enter how many hours, minutes, and seconds you would like to increase the time by (Space separated):\n";
+			cin >> h >> m >> s;
+		} else if (choice == 4) {
+			cout << "Enter how many seconds you would like to increase the time by:\n";
+			cin >> s;
+		} else {
+			cout << "Invalid choice!" << endl;
+			return 1;
+		}
+		// Invoke methods
+		switch (choice) {
+			case 1:
+				cout << "The sum of both times: " + first.add(second).toString();
+				break;
+			case 2:
+				cout << "The difference of both times: " + first.subtract(second).toString();
+				break;
+			case 3:
+				first.increaseBy(h, m, s);
+				cout << "The time increased by given H/M/S: " + first.toString();
+				break;
+			case 4:
+				first.increaseBy(s);
+				cout << "The time increased by given seconds: " + first.toString();
+				break;
+		}
+		cout << "\n";
 		cout << "Do you want to re-run this program? Enter 1 for yes and 0 for no.\n";
 		cin >> repeat;
 	}
-	cout << endl;
+	cout << flush;
 	return 0;
 }
