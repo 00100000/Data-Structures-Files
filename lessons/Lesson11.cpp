@@ -6,9 +6,6 @@ class Quadrilateral {
 	// sides
 	// a and b are adjacent, a and c are opposite.
 	int a, b, c, d;
-	// angles
-	// e and g are opposite
-	int e, f, g, h;
 
 	public:
 		Quadrilateral();
@@ -21,31 +18,56 @@ class Quadrilateral {
 			c = y;
 			d = z;
 		}
-		int setAngles(w, x, y, z) {
-			e = w;
-			f = x;
-			g = y;
-			h = z;
-		}
 		int perimeter() {
 			return a + b + c + d;
 		}
 		int area() {}
 };
-class Kite : Quadrilateral {
-	Kite(int x, int y) {
-		setSides(x, x, y, y);
-	}
+class Kite : virtual public Quadrilateral {
+	public:
+		Kite();
+		Kite(int x, int y) {
+			Quadrilateral(x, x, y, y);
+		}
 };
-class Trapezoid : Quadrilateral {
-	Trapezoid
+class Trapezoid : virtual public Quadrilateral {
+	public:
+		Trapezoid();
+		Trapezoid(int w, int x, int y, int z) {
+			Quadrilateral(w, x, y, z);
+		}
 };
-class Parallelogram : Trapezoid {};
-class IsocelesTrapezoid : Trapezoid {};
-class Rhombus : Kite, Parallelogram {};
-class Rectangle : IsocelesTrapezoid, Parallelogram {};
-class Square : Rhombus, Rectangle {};
-
-int main() {
-	return 0;
-}
+class Parallelogram : Trapezoid {
+	public:
+		Parallelogram();
+		Parallelogram(int x, int y) {
+			Trapezoid(x, y, x, y);
+		}
+};
+class IsocelesTrapezoid : Trapezoid {
+	public:
+		IsocelesTrapezoid();
+		IsocelesTrapezoid(int x, int y, int z) {
+			Trapezoid(x, y, z, y);
+		}
+};
+class Rhombus : Kite, Parallelogram {
+	public:
+		Rhombus();
+		Rhombus(int x) {
+			Kite(x, x);
+		}
+};
+class Rectangle : IsocelesTrapezoid, Parallelogram {
+	public:
+		Rectangle();
+		Rectangle(int x, int y) {
+			Parallelogram(x, y);
+		}
+};
+class Square : Rhombus, Rectangle {
+	public:
+		Square(int x) {
+			Rhombus(x);
+		}
+};
