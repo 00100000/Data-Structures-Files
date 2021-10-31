@@ -12,7 +12,7 @@ class Quadrilateral {
 		Quadrilateral(int w, int x, int y, int z) {
 			setSides(w, x, y, z);
 		}
-		int setSides(int w, int x, int y, int z) {
+		void setSides(int w, int x, int y, int z) {
 			a = w;
 			b = x;
 			c = y;
@@ -21,53 +21,52 @@ class Quadrilateral {
 		int perimeter() {
 			return a + b + c + d;
 		}
-		int area() {}
 };
 class Kite : virtual public Quadrilateral {
 	public:
 		Kite();
 		Kite(int x, int y) {
-			Quadrilateral(x, x, y, y);
+			setSides(x, x, y, y);
 		}
 };
 class Trapezoid : virtual public Quadrilateral {
 	public:
 		Trapezoid();
 		Trapezoid(int w, int x, int y, int z) {
-			Quadrilateral(w, x, y, z);
+			setSides(w, x, y, z);
 		}
 };
-class Parallelogram : Trapezoid {
+class Parallelogram : public Trapezoid {
 	public:
 		Parallelogram();
 		Parallelogram(int x, int y) {
-			Trapezoid(x, y, x, y);
+			setSides(x, y, x, y);
 		}
 };
-class IsocelesTrapezoid : Trapezoid {
+class IsocelesTrapezoid : public Trapezoid {
 	public:
 		IsocelesTrapezoid();
 		IsocelesTrapezoid(int x, int y, int z) {
-			Trapezoid(x, y, z, y);
+			setSides(x, y, z, y);
 		}
 };
-class Rhombus : Kite, Parallelogram {
+class Rhombus : public Kite, public Parallelogram {
 	public:
 		Rhombus();
 		Rhombus(int x) {
-			Kite(x, x);
+			setSides(x, x, x, x);
 		}
 };
 class Rectangle : IsocelesTrapezoid, Parallelogram {
 	public:
 		Rectangle();
 		Rectangle(int x, int y) {
-			Parallelogram(x, y);
+			setSides(x, y, x, y);
 		}
 };
 class Square : Rhombus, Rectangle {
 	public:
 		Square(int x) {
-			Rhombus(x);
+			setSides(x, x, x, x);
 		}
 };
