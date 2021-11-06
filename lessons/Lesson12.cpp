@@ -5,61 +5,80 @@
 #include <iostream>
 using namespace std;
 
-class Date
-{
-private:
-	int day, month, year;
+int maxDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-public:
-	Date(int inMonth, int inDay, int inYear)
-		: month(inMonth), day(inDay), year(inYear) {};
+class Date {
+	private:
+		int day, month, year;
 
-	Date& operator ++ () // prefix increment
-	{
-		++day;
-		return *this;
-	}
+	public:
+		Date(int inMonth, int inDay, int inYear)
+			: month(inMonth), day(inDay), year(inYear) {
+				adjust();
+			};
 
-	Date& operator -- () // prefix decrement
-	{
-		--day;
-		return *this;
-	}
+		Date& operator ++ () {
+			++day;
+			this->adjust();
+			return *this;
+		}
 
-	Date operator ++ (int) // postfix increment
-	{
-		Date copy(month, day, year);
-		++day;
-		return copy;
-	}
+		Date& operator -- () {
+			--day;
+			this->adjust();
+			return *this;
+		}
 
-	Date operator -- (int) // postfix decrement
-	{
-		Date copy(month, day, year);
-		--day;
-		return copy;
-	}
+		Date operator ++ (int) {
+			Date copy(month, day, year);
+			++day;
+			copy.adjust();
+			return copy;
+		}
 
-	void DisplayDate()
-	{
-		cout << month << " / " << day << " / " << year << endl;
-	}
+		Date operator -- (int) {
+			Date copy(month, day, year);
+			--day;
+			copy.adjust();
+			return copy;
+		}
+
+		operator int() const {
+			int ret = year * 365 + day;
+			for (int i = 0; i < month; i++) {
+				ret += maxDays[i];
+			}
+			return ret;
+		}
+
+		void adjust() {
+			month += day / (maxDays[month] + 1);
+			day %= (maxDays[month] + 1);
+			year += month / 13;
+			month %= 13;
+		}
+
+		void DisplayDate() {
+			cout << month << " / " << day << " / " << year << endl;
+		}
 };
 
-int main()
-{
-	Date holiday(12, 25, 2016); // Dec 25, 2016
+int main() {
+	Date holiday(12, 25, 2016);
+	Date fourHundred(1, 4, 1);
 
 	cout << "The date object is initialized to: ";
 	holiday.DisplayDate();
 
-	++holiday; // move date ahead by a day
+	++holiday;
 	cout << "Date after prefix-increment is: ";
 	holiday.DisplayDate();
 
-	--holiday; // move date backwards by a day
+	--holiday;
 	cout << "Date after a prefix-decrement is: ";
 	holiday.DisplayDate();
 
+	float toDays = fourHundred;
+	cout << toDays << endl;
 	return 0;
 }
