@@ -3,5 +3,5 @@
 		"iostream": "cpp",
 		"cmath": "cpp",
 		"ostream": "cpp"
-	}
+	},
 }
