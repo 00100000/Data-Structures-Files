@@ -52,10 +52,17 @@ class Date {
 		}
 
 		void adjust() {
-			month += day / (maxDays[month] + 1);
-			day %= (maxDays[month] + 1);
-			year += month / 13;
-			month %= 13;
+			// this definitely not the optimal way to do this, but it's quite easy, and
+			// not unreasonably bad
+			int days = *this;
+			int year = days / 365;
+			days %= 365;
+			int i = 0;
+			for (; days > maxDays[i]; i++) {
+				days -= maxDays[i];
+			}
+			month = i == 0 ? 12 : i;
+			day = days;
 		}
 
 		void DisplayDate() {
@@ -64,7 +71,7 @@ class Date {
 };
 
 int main() {
-	Date holiday(12, 25, 2016);
+	Date holiday(11, 55, 2016);
 	Date fourHundred(1, 4, 1);
 
 	cout << "The date object is initialized to: ";
@@ -78,7 +85,6 @@ int main() {
 	cout << "Date after a prefix-decrement is: ";
 	holiday.DisplayDate();
 
-	float toDays = fourHundred;
-	cout << toDays << endl;
+	cout << fourHundred << endl;
 	return 0;
 }
