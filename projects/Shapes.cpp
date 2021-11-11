@@ -42,6 +42,9 @@ class Polygon : Output {
 		void setWidth(int w) {
 			width = w;
 		}
+		void print() {
+			cout << "~ Information About This Polygon ~\nLength: " << getLength() << "\nWidth: " << getWidth();
+		}
 };
 
 class Rectangle : public Polygon {
@@ -66,7 +69,7 @@ class Triangle : public Polygon {
 			return (float)(getLength() * getWidth()) / 2;
 		}
 		void print() {
-			cout << "~ Information About This Rectangle ~\nLength: " << getLength() << "\nWidth: " << getWidth() << "\nArea: " << area() << "\n";
+			cout << "~ Information About This Triangle ~\nLength: " << getLength() << "\nWidth: " << getWidth() << "\nArea: " << area() << "\n";
 		}
 };
 

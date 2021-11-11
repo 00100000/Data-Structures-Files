@@ -2,17 +2,20 @@
 // Author: Aidan Din
 // Implements multiple inheritance with a variety of quadrilaterals
 
+#include <iostream>
+using namespace std;
+
 class Quadrilateral {
 	// sides
 	// a and b are adjacent, a and c are opposite.
 	int a, b, c, d;
 
 	public:
-		Quadrilateral();
+		Quadrilateral() {}
 		Quadrilateral(int w, int x, int y, int z) {
-			setSides(w, x, y, z);
+			setValues(w, x, y, z);
 		}
-		void setSides(int w, int x, int y, int z) {
+		void setValues(int w, int x, int y, int z) {
 			a = w;
 			b = x;
 			c = y;
@@ -24,49 +27,54 @@ class Quadrilateral {
 };
 class Kite : virtual public Quadrilateral {
 	public:
-		Kite();
+		Kite() {}
 		Kite(int x, int y) {
-			setSides(x, x, y, y);
+			setValues(x, x, y, y);
 		}
 };
 class Trapezoid : virtual public Quadrilateral {
 	public:
-		Trapezoid();
+		Trapezoid() {}
 		Trapezoid(int w, int x, int y, int z) {
-			setSides(w, x, y, z);
+			setValues(w, x, y, z);
 		}
 };
 class Parallelogram : public Trapezoid {
 	public:
-		Parallelogram();
+		Parallelogram() {}
 		Parallelogram(int x, int y) {
-			setSides(x, y, x, y);
+			setValues(x, y, x, y);
 		}
 };
 class IsocelesTrapezoid : public Trapezoid {
 	public:
-		IsocelesTrapezoid();
+		IsocelesTrapezoid() {}
 		IsocelesTrapezoid(int x, int y, int z) {
-			setSides(x, y, z, y);
+			setValues(x, y, z, y);
 		}
 };
 class Rhombus : public Kite, public Parallelogram {
 	public:
-		Rhombus();
+		Rhombus() {}
 		Rhombus(int x) {
-			setSides(x, x, x, x);
+			setValues(x, x, x, x);
 		}
 };
-class Rectangle : IsocelesTrapezoid, Parallelogram {
+class Rectangle : public IsocelesTrapezoid, public Parallelogram {
 	public:
-		Rectangle();
+		Rectangle() {}
 		Rectangle(int x, int y) {
-			setSides(x, y, x, y);
+			setValues(x, y, x, y);
 		}
 };
-class Square : Rhombus, Rectangle {
+class Square : public Rhombus, public Rectangle {
 	public:
 		Square(int x) {
-			setSides(x, x, x, x);
+			setValues(x, x, x, x);
 		}
 };
+
+int main() {
+	Square s(5);
+	cout << s.perimeter() << endl;
+}
