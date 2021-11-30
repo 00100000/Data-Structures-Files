@@ -1,5 +1,6 @@
 // Duration.cpp
 // Author: Aidan Din
+// Performs a variety of mathematical functions on different durations of time
 
 #include <iostream>
 #include <random>
@@ -58,7 +59,7 @@ class Duration {
 			return (double)toSecs() / (double)d.toSecs();
 		}
 		// converts the Duration in HH:MM:SS format
-		friend ostream& operator << (ostream &stream, Duration const& d) {
+		friend ostream& operator << (ostream& stream, Duration const& d) {
 			string s = "";
 			if (d.hour < 10) s += '0';
 			s += to_string(d.hour) + ':';
