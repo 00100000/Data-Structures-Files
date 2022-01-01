@@ -1,3 +1,7 @@
+// ListLab1.h
+// Author: Aidan Din
+// ListLab1 header file
+
 #ifndef LISTNODE
 #define LISTNODE
 
