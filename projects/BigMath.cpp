@@ -15,9 +15,9 @@ class BigMath {
 			next = n;
 		}
 		BigMath(string s) {
-			this->digit = s.at(s.size() - 1);
+			this->digit = s.at(s.size() - 1) - 48;
 			BigMath* prev = this;
-			for (int i = s.size() - 1; i >= 0; i--) {
+			for (int i = s.size() - 2; i >= 0; i--) {
 				BigMath* temp = new BigMath(s.at(i) - 48, nullptr);
 				prev->next = temp;
 				prev = temp;
@@ -63,10 +63,10 @@ BigMath* BigMath::arith(BigMath* a, BigMath* b, bool add) {
 }
 // converts BigMath into a properly formatted base 10 number
 BigMath* BigMath::fix(BigMath* b) {
-	bool positive = false;
+	bool positive = true;
 	// check if last non-zero digit in BigMath is negative or positive
 	BigMath* end = b;
-	while (end->next != nullptr) {
+	while (end != nullptr) {
 		if (end->digit != 0) {
 			positive = end->digit > 0;
 		}
@@ -94,7 +94,9 @@ BigMath* BigMath::fix(BigMath* b) {
 		temp = temp->next;
 	}
 	// if an addition creates a new place larger number
-	if (carry != 0) {
+	end = b;
+	while (end->next != nullptr) end = end->next;
+	if (positive && carry != 0) {
 		BigMath* newTail = new BigMath(carry, nullptr);
 		end->next = newTail;
 	}
