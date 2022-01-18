@@ -2,8 +2,8 @@
 // Author: Aidan Din
 // Implements a Complex class with a variety of functions
 
-#ifndef COMPLEX_NUMBERS
-#define COMPLEX_NUMBERS
+#ifndef COMPLEXNUMBERS_H
+#define COMPLEXNUMBERS_H
 
 #include <iostream>
 #include <math.h>

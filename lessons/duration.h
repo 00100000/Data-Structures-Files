@@ -2,8 +2,8 @@
 // Author: Aidan Din
 // duration header file
 
-#ifndef DURATION
-#define DURATION
+#ifndef DURATION_H
+#define DURATION_H
 
 #include <iostream>
 #include <random>

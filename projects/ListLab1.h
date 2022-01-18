@@ -2,8 +2,8 @@
 // Author: Aidan Din
 // ListLab1 header file
 
-#ifndef LISTNODE
-#define LISTNODE
+#ifndef LISTLAB1_H
+#define LISTLAB1_H
 
 #include <iostream>
 using namespace std;
