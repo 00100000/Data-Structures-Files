@@ -1,5 +1,8 @@
 *
 # Unignore all with extensions
-!*.*
+!README.md
+!.gitignore
+!*.h
+!*.cpp
 # Unignore all dirs
 !*/
