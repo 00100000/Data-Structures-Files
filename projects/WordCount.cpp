@@ -1,6 +1,6 @@
 // WordCount.cpp
 // Author: Aidan Din
-// Prints out the number of words in each file
+// Prints out each unique word and the number of times it is seen in a file
 
 #include <fstream>
 #include <iostream>
@@ -26,7 +26,7 @@ class ListNode {
 		int getCount();
 		ListNode* getNext();
 };
-// inserts a node in the middle of a list
+// inserts a new word into the list
 ListNode* ListNode::insert(ListNode* h, string s) {
 	if (h->value.compare("") == 0) {
 		h = new ListNode(s, 1, nullptr);
