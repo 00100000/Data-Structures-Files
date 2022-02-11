@@ -23,20 +23,66 @@ class ListNode {
 			prev = p;
 		}
 		// methods
-		ListNode* add(string s);
-		ListNode* add(string s, int pos);
-		ListNode* remove();
-		ListNode* remove(int pos);
+		ListNode* add(ListNode* h, string s);
+		ListNode* add(ListNode* h, string s, int pos);
+		ListNode* remove(ListNode* h);
+		ListNode* remove(ListNode* h, int pos);
 		friend ostream& operator << (ostream& stream, ListNode* n);
 };
+// adds a node to the start of a list
+ListNode* ListNode::add(ListNode* h, string s) {
+	return new ListNode(s, h, nullptr);
+}
+// adds a node in the middle of a list
+ListNode* ListNode::add(ListNode* h, string s, int pos) {
+	ListNode* tempH = new ListNode(h->value, h->next, h->prev);
+	for (int i = 0; tempH != nullptr; i++) {
+		if (i == pos - 1) {
+			ListNode* ins = new ListNode(s, tempH->next, tempH);
+			tempH->next = ins;
+			if (ins->next != nullptr) {
+				ins->next->prev = ins;
+			}
+			break;
+		}
+		tempH = tempH->next;
+	}
+	return h;
+}
+// removes a node from the start of a list
+ListNode* ListNode::remove(ListNode* h) {
+	return h->next;
+}
+// removes a node from a specific position in a list
+ListNode* ListNode::remove(ListNode* h, int pos) {
+	ListNode* tempH = new ListNode(h->value, h->next, h->prev);
+	for (int i = 0; tempH != nullptr; i++) {
+		if (i == pos - 1) {
+			ListNode* del = tempH->next;
+			tempH->next = tempH->next->next;
+			/*
+			if (tempH->next->next != nullptr) {
+				tempH->next->next->prev = tempH;
+			}
+			*/
+			delete del;
+			break;
+		}
+		tempH = tempH->next;
+	}
+	return h;
+}
 // outputs list to output stream
 ostream& operator << (ostream& stream, ListNode* n) {
 	stream << "[";
 	while (n != nullptr) {
-		stream << n->value << ", ";
+		stream << n->value;
+		if (n->next != nullptr) {
+			stream << ", ";
+		}
 		n = n->next;
 	}
-	stream << "]";
+	stream << "]" << endl;
 	return stream;
 }
 
