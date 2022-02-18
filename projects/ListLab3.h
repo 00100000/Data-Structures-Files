@@ -31,7 +31,11 @@ class ListNode {
 };
 // adds a node to the start of a list
 ListNode* ListNode::add(ListNode* h, string s) {
-	return new ListNode(s, h, nullptr);
+	ListNode* newHead = new ListNode(s, h, nullptr);
+	if (h != nullptr) {
+		h->prev = newHead;
+	}
+	return newHead;
 }
 // adds a node in the middle of a list
 ListNode* ListNode::add(ListNode* h, string s, int pos) {
@@ -51,6 +55,9 @@ ListNode* ListNode::add(ListNode* h, string s, int pos) {
 }
 // removes a node from the start of a list
 ListNode* ListNode::remove(ListNode* h) {
+	if (h->next != nullptr) {
+		h->prev = nullptr;
+	}
 	return h->next;
 }
 // removes a node from a specific position in a list
@@ -60,11 +67,9 @@ ListNode* ListNode::remove(ListNode* h, int pos) {
 		if (i == pos - 1) {
 			ListNode* del = tempH->next;
 			tempH->next = tempH->next->next;
-			/*
 			if (tempH->next->next != nullptr) {
 				tempH->next->next->prev = tempH;
 			}
-			*/
 			delete del;
 			break;
 		}
