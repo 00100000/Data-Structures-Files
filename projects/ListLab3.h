@@ -64,13 +64,13 @@ ListNode* ListNode::remove(ListNode* h) {
 ListNode* ListNode::remove(ListNode* h, int pos) {
 	ListNode* tempH = new ListNode(h->value, h->next, h->prev);
 	for (int i = 0; tempH != nullptr; i++) {
-		if (i == pos - 1) {
-			ListNode* del = tempH->next;
-			tempH->next = tempH->next->next;
-			if (tempH->next->next != nullptr) {
-				tempH->next->next->prev = tempH;
+		if (i == pos) {
+			if (tempH->next != nullptr) {
+				tempH->next->prev = tempH->prev;
 			}
-			delete del;
+			if (tempH->prev != nullptr) {
+				tempH->prev->next = tempH->next;
+			}
 			break;
 		}
 		tempH = tempH->next;
