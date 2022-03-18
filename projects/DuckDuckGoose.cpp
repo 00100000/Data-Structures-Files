@@ -43,30 +43,32 @@ int main() {
 	string name;
 	cout << "Enter the name of the file you'd like to read from:\n";
 	cin >> name;
+
 	ifstream infile(name);
 	ofstream outfile("result.txt");
 
 	int cycle, participants;
-	infile >> participants >> cycle;
-	ListNode* head = new ListNode(1, nullptr, nullptr);
-	ListNode* last = head;
-	for (int i = 1; i < participants; i++) {
-		ListNode* temp = new ListNode(i + 1, nullptr, last);
-		last->setNext(temp);
-		last = temp;
-	}
-	last->setNext(head);
-	head->setPrev(last);
-
-	head = head->getPrev();
-	for (int i = 0; i < participants - 1; i++) {
-		for (int j = 0; j < cycle; j++) {
-			head = head->getNext();
+	for (int i = 0; infile >> participants >> cycle; i++) {
+		ListNode* head = new ListNode(1, nullptr, nullptr);
+		ListNode* last = head;
+		for (int j = 1; j < participants; j++) {
+			ListNode* temp = new ListNode(j + 1, nullptr, last);
+			last->setNext(temp);
+			last = temp;
 		}
-		outfile << "Trial " << i + 1 << ": " << head->getPos() << "\n";
-		// not clearing the memory, but whatever
-		head->getNext()->setPrev(head->getPrev());
-		head->getPrev()->setNext(head->getNext());
+		last->setNext(head);
+		head->setPrev(last);
+
+		head = head->getPrev();
+		for (int j = 0; j < participants - 1; j++) {
+			for (int k = 0; k < cycle; k++) {
+				head = head->getNext();
+			}
+			// not clearing the memory, but whatever
+			head->getNext()->setPrev(head->getPrev());
+			head->getPrev()->setNext(head->getNext());
+		}
+		outfile << "Trial " << i + 1 << ": " << head->getNext()->getPos() << "\n";
 	}
 
 	cout << flush;

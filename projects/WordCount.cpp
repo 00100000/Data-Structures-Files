@@ -77,6 +77,7 @@ int main() {
 	string name;
 	cout << "Enter the name of a file:" << endl;
 	cin >> name;
+
 	ifstream infile(name);
 	ofstream outfile("result.txt");
 
