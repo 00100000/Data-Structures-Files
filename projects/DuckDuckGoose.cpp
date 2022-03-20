@@ -48,7 +48,7 @@ int main() {
 	ofstream outfile("result.txt");
 
 	int cycle, participants;
-	for (int i = 0; infile >> participants >> cycle; i++) {
+	for (int i = 1; infile >> participants >> cycle; i++) {
 		ListNode* head = new ListNode(1, nullptr, nullptr);
 		ListNode* last = head;
 		for (int j = 1; j < participants; j++) {
@@ -68,7 +68,7 @@ int main() {
 			head->getNext()->setPrev(head->getPrev());
 			head->getPrev()->setNext(head->getNext());
 		}
-		outfile << "Trial " << i + 1 << ": " << head->getNext()->getPos() << "\n";
+		outfile << "Trial " << i << ": " << head->getNext()->getPos() << "\n";
 	}
 
 	cout << flush;
