@@ -46,8 +46,8 @@ bool ParenMatch::checkParen(string s) {
 			head = head->push(new ParenMatch(l, head));
 		}
 		if (r != '.') {
-			// check if the index of the right character matches
-			// the index of the top of the stack
+			// check if the index of the right character matches the
+			// index of the left character on top of the stack
 			int rIndex = -1, pIndex = -1;
 			for (int j = 0; j < head->RIGHT.size(); j++) {
 				if (r == head->RIGHT[j]) {
