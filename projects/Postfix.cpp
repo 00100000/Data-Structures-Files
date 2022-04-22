@@ -84,7 +84,7 @@ int eval(string s) {
 		}
 	}
 	return head->peek();
-};
+}
 
 int main() {
 	string name;
