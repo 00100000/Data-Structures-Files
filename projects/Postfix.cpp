@@ -95,7 +95,7 @@ int main() {
 	ofstream outfile("result.txt");
 
 	string expr;
-	for (int i = 1; getline(infile, expr); i++) {
+	while (getline(infile, expr)) {
 		outfile << expr << ": " << eval(expr) << "\n";
 	}
 
