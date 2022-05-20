@@ -1,3 +1,10 @@
+// TreeLab.h
+// Author: Aidan Din
+// Implements a binary search tree with a variety of methods
+
+#ifndef TREELAB_H
+#define TREELAB_H
+
 #include <string>
 using namespace std;
 
@@ -87,8 +94,16 @@ string TreeNode::display(TreeNode* t, int level) {
 	if (level > 0) str += "->";
 	str += t->getLetter();
 	// left on top, right on bottom
-	str = display(t->getLeft(), level + 1) + "\n" + str;
-	str = str + display(t->getRight(), level + 1);
+	if (t->getLeft() == nullptr && t->getRight() == nullptr) return str;
+	if (t->getLeft() == nullptr) {
+		str = "\n" + str;
+	} else {
+		str = display(t->getLeft(), level + 1) + "\n" + str;
+	}
+	if (t->getRight() == nullptr) {
+	} else {
+		str = str + "\n" + display(t->getRight(), level + 1);
+	}
 	return str;
 }
 
@@ -241,3 +256,5 @@ TreeNode* TreeNode::getLeft() {
 TreeNode* TreeNode::getRight() {
 	return right;
 }
+
+#endif
